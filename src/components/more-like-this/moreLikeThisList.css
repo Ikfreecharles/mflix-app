@@ -1,0 +1,51 @@
+.mlt-outer-div {
+   background-color: #1a1a1a;
+   height: auto;
+   border-radius: 2px;
+}
+.mlt-img {
+   width: 100%;
+   height: 8rem;
+}
+.mlt-img img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+.mlt-details {
+   padding: 1rem;
+   padding-bottom: 2rem;
+}
+.mlt-metadata-outer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1rem;
+}
+.mlt-metadata {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 70%;
+}
+.mlt-metadata p {
+   font-weight: 600;
+}
+.mlt-add {
+   width: 2.5rem;
+   height: 2.5rem;
+   border-radius: 50%;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.mlt-title {
+   font-weight: 800;
+   margin-bottom: 0.3rem;
+}
+.mlt-descr {
+   font-weight: 300;
+}

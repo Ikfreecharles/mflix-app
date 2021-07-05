@@ -1,0 +1,42 @@
+.ep-div-outer {
+   padding: 2rem 3rem;
+   cursor: pointer;
+}
+.ep-number {
+   z-index: 2;
+}
+.ep-number h3 {
+   font-size: 10rem;
+   opacity: 0.3;
+}
+.ep-div-outer:hover {
+   background-color: #171717;
+}
+.ep-img-div img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: top;
+   border-radius: 2px;
+}
+.ep-div-outer h3 {
+   margin: 0 0 1rem 0;
+}
+.ep-div-outer p {
+   font-weight: 300;
+   margin-bottom: 0.2rem;
+   overflow: hidden;
+}
+.ep-div-outer span {
+   font-weight: 700;
+   color: #636363;
+}
+.ep-crew {
+   display: flex;
+   align-items: center;
+   font-size: 0.8rem;
+}
+.ep-crew p {
+   line-height: 1.4rem;
+   color: #636363;
+}

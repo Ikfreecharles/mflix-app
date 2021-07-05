@@ -1,0 +1,129 @@
+.movie-card-outer-div {
+   width: 100%;
+}
+.movie-card-wrapper {
+   position: relative;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+.movie-card-outer-container {
+   width: max-content;
+   display: flex;
+   margin-bottom: 30px;
+   margin-left: 50px;
+   transition: all 0.4s ease-in-out;
+}
+.movie-list-outer-div-container {
+   width: 230px;
+   height: 130px;
+   margin: 0 5px 0 0;
+   cursor: pointer;
+   background-color: #1a1a1a;
+   color: #fff;
+   border-radius: 1px;
+   overflow: hidden;
+}
+.movie-list-outer-div-container:hover {
+   position: absolute;
+   height: 400px;
+   width: 360px;
+   z-index: 6;
+   top: -135px;
+   border-radius: 5px;
+}
+.movie-list-inner-div {
+   width: 100%;
+   height: 150px;
+}
+.movie-list-inner-div img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+}
+.movie-list-details {
+   width: 95%;
+   margin: 1rem auto;
+}
+.movie-list-controls {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.movie-list-four-controls {
+   width: 60%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.movie-list-play,
+.movie-list-plus,
+.movie-list-like,
+.movie-list-dislike,
+.movie-list-dropdown {
+   width: 2.5rem;
+   height: 2.5rem;
+   border-radius: 50%;
+   border: 2px solid #7a7a7a;
+   color: #fff;
+   font-size: 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.movie-list-play {
+   background-color: #fff;
+   border: none;
+   color: #000;
+}
+.more-movie-list-details {
+   width: 60%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 0.7rem;
+}
+.more-movie-list-details p {
+   font-weight: 700;
+   color: #9c9c9c;
+}
+.movie-list-title {
+   font-weight: 700;
+   font-size: 1.2rem;
+   margin: 0.5rem 0;
+}
+.movie-list-description {
+   font-weight: 400;
+}
+.movie-list-genre {
+   margin-top: 0.7rem;
+}
+.movie-list-genre p {
+   font-weight: 400;
+   color: #7a7a7a;
+}
+
+.scroll-arrow {
+   position: absolute;
+   height: 100%;
+   width: 3rem;
+   background-color: rgba(0, 0, 0, 0.2);
+   font-size: 3rem;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   transition: all 0.3s ease-in-out;
+}
+.scroll-arrow:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+.left {
+   left: 0;
+   z-index: 7;
+}
+.right {
+   right: 0;
+   z-index: 7;
+}

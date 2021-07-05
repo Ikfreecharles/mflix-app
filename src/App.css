@@ -1,0 +1,11 @@
+.app-div {
+   position: relative;
+}
+.movie-modal {
+   position: absolute;
+   top: 0;
+   left: 20px;
+}
+.new-movies-container-div-app-js {
+   position: relative;
+}

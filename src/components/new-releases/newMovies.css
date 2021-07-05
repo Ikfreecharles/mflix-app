@@ -1,0 +1,223 @@
+.new-movie-section {
+   position: absolute;
+   width: 100%;
+   top: 80%;
+}
+h3 {
+   color: #fff;
+   font-size: 1.2rem;
+   font-weight: 700;
+   margin: 0 0 1rem 5%;
+}
+.list-container {
+   width: max-content;
+   display: flex;
+   align-items: center;
+   transform: translateX(0px);
+   transition: all 0.7s ease-in-out;
+}
+.movie-list {
+   position: relative;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+.scroll-arrow {
+   position: absolute;
+   height: 100%;
+   width: 3rem;
+   background-color: rgba(0, 0, 0, 0.2);
+   font-size: 3rem;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   transition: all 0.3s ease-in-out;
+}
+.scroll-arrow:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+}
+.left {
+   left: 0;
+   z-index: 2;
+}
+.right {
+   right: 0;
+}
+
+/* -----------------------------------------List Styling */
+.movie-card {
+   position: relative;
+   height: 70vh;
+   width: 210px;
+   background-color: gray;
+   margin: 0 4px 2rem 0;
+   border-radius: 0.3rem;
+   padding: 1rem;
+   display: flex;
+   align-items: flex-end;
+   transition: all 0.3s ease-in-out;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+.overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background: rgb(0, 0, 0);
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 6%,
+      rgba(0, 0, 0, 0) 100%
+   );
+}
+.overlay-two {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   z-index: 3;
+   opacity: 0;
+   background: rgb(0, 0, 0);
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.923406862745098) 0%,
+      rgba(0, 0, 0, 0) 72%
+   );
+   transition: all 0.4s ease-in-out;
+}
+.movie-card:hover > .movie-details {
+   transform: scale(0.9);
+   opacity: 1;
+}
+.movie-card:hover > .overlay-two {
+   opacity: 1;
+}
+
+.movie-details {
+   position: absolute;
+   width: 95%;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   opacity: 0;
+   z-index: 4;
+   transition: all 1s ease-in-out;
+}
+.control {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1rem;
+}
+.play-plus {
+   display: flex;
+   align-items: center;
+}
+.play,
+.plus,
+.details {
+   width: 2.8rem;
+   height: 2.8rem;
+   border-radius: 50%;
+   margin-right: 0.5rem;
+   font-size: 2.1rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.play {
+   background-color: #fff;
+}
+.plus {
+   border: 2px solid #fff;
+   color: #fff;
+}
+.details {
+   background-color: rgba(255, 255, 255, 0.4);
+   color: #fff;
+}
+.movie-details h4,
+.movie-details p,
+.movie-details ul {
+   color: #fff;
+   font-weight: 500;
+
+   font-size: 0.9rem;
+}
+.movie-details h4 {
+   font-size: 1.2rem;
+}
+.movie-more-details {
+   width: 100%;
+   margin: 0.8rem 0;
+   display: flex;
+   align-items: center;
+}
+.movie-more-details p {
+   margin-right: 0.3rem;
+}
+.age-limit {
+   border: 1px solid #fff;
+   padding: 2px 6px;
+}
+.movie-genre-list {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   padding: 0;
+}
+.movie-logo-div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-around;
+   height: 20%;
+   z-index: 2;
+   width: 100%;
+}
+.movie-type {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 0.5rem;
+   color: #fff;
+}
+.movie-type img {
+   width: 20px;
+   margin-right: 0.5rem;
+}
+.movie-type p {
+   font-weight: 400;
+}
+.movie-logo {
+   width: 100%;
+}
+.stripe-outer {
+   width: 100%;
+   height: 1.5rem;
+   display: flex;
+   justify-content: center;
+}
+.stripe {
+   height: 100%;
+   width: 50%;
+   background-color: red;
+   text-transform: uppercase;
+   text-align: center;
+   font-size: 0.8rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #fff;
+}
+.stripe p {
+   margin: 0;
+   font-weight: 400;
+}

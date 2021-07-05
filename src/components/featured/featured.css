@@ -1,0 +1,77 @@
+.featured-outer-div {
+   height: 170vh;
+   width: 100%;
+}
+.featured-inner-div {
+   height: 100vh;
+   width: 100%;
+   position: relative;
+}
+.featured-inner-div-padded {
+   position: relative;
+   width: 100%;
+   margin: 0 auto;
+}
+.featured-inner-div-padded img {
+   width: 100%;
+   object-fit: cover;
+}
+.featured-inner-div-padded iframe {
+   width: 100vw;
+   height: 100vh;
+   border: none;
+}
+.featured-video {
+   height: 100%;
+   width: 100%;
+}
+.featured-video-details {
+   position: absolute;
+   top: 25%;
+   left: 5%;
+   color: #fff;
+   width: 40rem;
+   z-index: 10;
+}
+.featured-video-details img {
+   width: 5rem;
+   margin-bottom: 1rem;
+}
+.featured-video-details h2 {
+   margin-bottom: 1rem;
+   font-weight: 400;
+   font-size: 2.5rem;
+}
+.featured-video-details p {
+   font-weight: 300;
+   line-height: 1.8rem;
+}
+.buttons-div {
+   margin-top: 1.5rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+.buttons-div button {
+   padding: 0.8rem 2.5rem;
+   border: none;
+   margin-right: 1rem;
+   font-weight: 500;
+   font-size: 1.2rem;
+   border-radius: 4px;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+}
+.icon-size {
+   font-size: 2rem;
+   margin-right: 0.5rem;
+}
+.play-button {
+   background-color: red;
+   color: #fff;
+}
+.more-info-button {
+   background-color: rgba(199, 199, 199, 0.5);
+   color: #fff;
+}

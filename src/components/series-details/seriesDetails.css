@@ -1,0 +1,49 @@
+.sd-topbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-right: 5%;
+}
+.sd-form {
+   position: relative;
+}
+.sd-btn p,
+.sd-options p {
+   margin: 0;
+   font-weight: 700;
+}
+.sd-btn {
+   background-color: #1a1a1a;
+   color: #fff;
+   border-radius: 2px;
+   border: 1px solid #434343;
+   padding: 0.7rem 1.2rem;
+   font-size: 1.2rem;
+   font-weight: 700;
+   cursor: pointer;
+}
+.sd-btn-inner {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.sd-options {
+   background-color: #1a1a1a;
+   width: max-content;
+   padding: 1rem 0.1rem;
+   position: absolute;
+   top: 50px;
+   right: 0;
+   cursor: pointer;
+   display: none;
+}
+.sd-show {
+   display: block;
+}
+.sd-options p {
+   padding: 0.4rem 2rem;
+   width: 100%;
+}
+.sd-options p:hover {
+   background-color: #7a7a7a;
+}
