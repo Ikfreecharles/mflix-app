@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "./nav.css";
 import "./navMediaquery.css";
@@ -6,19 +6,41 @@ import { FiSearch } from "react-icons/fi";
 import { RiNotification2Line } from "react-icons/ri";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { navAnimate } from "../../Animation/Animation";
 
 function Nav() {
    const [pageIsScrolled, setpageIsScrolled] = useState(false);
    const [browseClicked, setbrowseClicked] = useState(false);
    const [profileclicked, setprofileclicked] = useState(false);
+   const menuDivRef = useRef();
 
    window.onscroll = () => {
       setpageIsScrolled(window.pageYOffset === 0 ? false : true);
       return () => (window.onscroll = null);
    };
+   console.log(browseClicked);
+   const handleBrowseIsClicked = () => {
+      setbrowseClicked((browseClicked) => !browseClicked);
+      navAnimate();
+      browseClicked
+         ? (menuDivRef.current.style.display = "none")
+         : (menuDivRef.current.style.display = "block");
+   };
+
+   useEffect(() => {
+      window.addEventListener("resize", () => {
+         if (window.innerWidth > 768) {
+            setbrowseClicked(false);
+            menuDivRef.current.style.display = "block";
+         } else {
+            setbrowseClicked(false);
+            menuDivRef.current.style.display = "none";
+         }
+      });
+   }, []);
 
    return (
-      <nav className={`navbar ${pageIsScrolled ? " navbar-color" : ""}`}>
+      <nav className={`navbar-div ${pageIsScrolled ? " navbar-color" : ""}`}>
          <div className="navbar-container">
             <div className="left-side">
                <div className="logo-div">
@@ -30,7 +52,7 @@ function Nav() {
                <div
                   className="browse"
                   onClick={() => {
-                     setbrowseClicked((browseClicked) => !browseClicked);
+                     handleBrowseIsClicked();
                   }}
                >
                   <p>Browse</p>
@@ -40,7 +62,7 @@ function Nav() {
                      <MdKeyboardArrowUp className="drop-icon" />
                   )}
                </div>
-               <div className="menu-div">
+               <div className="menu-div" ref={menuDivRef}>
                   <ul>
                      <li>Home</li>
                      <li>Series</li>

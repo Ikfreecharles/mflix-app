@@ -3,13 +3,17 @@
  */
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-width: 550px) {
+@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
    /* Styles */
    html {
-      font-size: 10px;
+      font-size: 9px;
    }
    .left-side {
       position: relative;
+   }
+   .browse {
+      display: flex;
+      align-items: flex-start;
    }
    .menu-div {
       position: absolute;
@@ -25,10 +29,7 @@
    .menu-div li {
       margin-bottom: 1rem;
    }
-   .browse {
-      display: flex;
-      align-items: flex-start;
-   }
+
    .browse p {
       margin-right: 0.2rem;
    }
@@ -40,61 +41,54 @@
    }
 }
 
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width: 321px) {
-   /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) {
-   /* Styles */
-}
-
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 550.1px) and (max-device-width: 1024px) {
+@media only screen and (min-device-width: 480.1px) and (max-device-width: 768px) {
    /* Styles */
    html {
-      font-size: 12px;
+      font-size: 10px;
    }
-   .menu-div {
-      width: 60%;
+   .browse {
+      display: flex;
+      align-items: flex-start;
    }
    .left-side {
-      width: 75%;
+      position: relative;
    }
-   .right-side {
-      width: 25%;
+   .menu-div {
+      position: absolute;
+      top: 3.3rem;
+      left: 18%;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      cursor: pointer;
+      width: auto;
    }
-}
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-   /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-   /* Styles */
+   .menu-div ul {
+      display: inline-block;
+   }
+   .menu-div li {
+      margin-bottom: 1rem;
+   }
+   .browse p {
+      margin-right: 0.2rem;
+   }
+   .drop-icon {
+      font-size: 1.5rem;
+   }
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width: 1024.1px) {
+@media only screen and (min-width: 768.1px) {
    /* Styles */
    html {
-      font-size: 16px;
-   }
-   .menu-div {
-      width: 45%;
+      font-size: 14px;
    }
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1824px) {
+@media only screen and (min-width: 1280px) {
    /* Styles */
    html {
-      font-size: 18px;
-   }
-   .menu-div {
-      width: 40%;
+      font-size: 17px;
    }
 }
