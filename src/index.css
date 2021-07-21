@@ -9,6 +9,9 @@
    border: none;
    vertical-align: baseline;
 }
+body {
+   overflow-y: hidden;
+}
 html,
 body {
    font-family: "Roboto", sans-serif;
@@ -38,4 +41,44 @@ body {
 p {
    line-height: 1.5rem;
    color: #c9c9c9;
+}
+
+/*
+ * Author: http://stuffandnonsense.co.uk/blog/about/hardboiled_css3_media_queries/
+ */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+   /* Styles */
+   html,
+   body {
+      font-size: 9px;
+   }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 480.1px) and (max-device-width: 768px) {
+   /* Styles */
+   html,
+   body {
+      font-size: 10px;
+   }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 768.1px) {
+   /* Styles */
+   html,
+   body {
+      font-size: 14px;
+   }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1280px) {
+   /* Styles */
+   html,
+   body {
+      font-size: 17px;
+   }
 }

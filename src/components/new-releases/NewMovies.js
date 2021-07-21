@@ -1,17 +1,15 @@
-import { useState, useRef } from "react";
-import List from "./List";
+import { useState, useRef, useContext } from "react";
+import AppContext from "../../Context/app-context";
+
+//import components and css
 import "./newMovies.css";
+import List from "./List";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-function NewMovies({
-   data,
-   baseUrl,
-   handleShowModal,
-   handleShowModalSeries,
-   heading,
-}) {
+function NewMovies({ heading }) {
+   const { trendingMovies } = useContext(AppContext);
    const [slideNumber, setslideNumber] = useState(0);
-   const [mouseIn, setmouseIn] = useState(true);
+   const [mouseIn, setmouseIn] = useState(false);
    const listRef = useRef();
 
    const handleClick = (direction) => {
@@ -20,13 +18,13 @@ function NewMovies({
       if (direction === "left" && slideNumber > 0) {
          setslideNumber((slideNumber) => slideNumber - 4);
          listRef.current.style.transform = `translateX(${
-            210 * 4 + distance
+            250 * 4 + distance
          }px)`;
       }
-      if (direction === "right" && slideNumber < data.length - 4) {
+      if (direction === "right" && slideNumber < trendingMovies.length - 4) {
          setslideNumber((slideNumber) => slideNumber + 4);
          listRef.current.style.transform = `translateX(${
-            -210 * 4 + distance
+            -250 * 4 + distance
          }px)`;
       }
    };
@@ -35,22 +33,26 @@ function NewMovies({
       <section className="new-movie-section">
          <h3>{heading}</h3>
          <div className="movie-list">
-            {mouseIn && (
-               <div
-                  className="scroll-arrow left"
-                  onClick={() => handleClick("left")}
-                  //onMouseEnter={() => setmouseIn(true)}
-               >
-                  <IoIosArrowBack />
-               </div>
-            )}
+            <div
+               className="scroll-arrow left"
+               onClick={() => handleClick("left")}
+               onMouseEnter={() => setmouseIn(true)}
+               onMouseLeave={() => setmouseIn(false)}
+               style={{
+                  opacity: `${mouseIn ? "1" : "0"}`,
+                  transition: "all 0.5s ease-in-out",
+               }}
+            >
+               <IoIosArrowBack className="nm-scroll-arrow" />
+            </div>
+            )
             <div
                className="list-container"
                ref={listRef}
-               /* onMouseEnter={() => setmouseIn(true)}
-               onMouseLeave={() => setmouseIn(false)} */
+               onMouseEnter={() => setmouseIn(true)}
+               onMouseLeave={() => setmouseIn(false)}
             >
-               {data.map((items) => {
+               {trendingMovies.map((items) => {
                   const {
                      id,
                      backdrop_path,
@@ -70,28 +72,29 @@ function NewMovies({
                         backdrop={backdrop_path}
                         title={title}
                         mediaType={media_type}
-                        baseUrl={baseUrl}
                         name={name}
                         firstAirDate={first_air_date}
                         releaseDate={release_date}
                         posterPath={poster_path}
                         originalLanguage={original_language}
                         adult={adult}
-                        handleShowModal={handleShowModal}
-                        handleShowModalSeries={handleShowModalSeries}
                      />
                   );
                })}
             </div>
-            {mouseIn && (
-               <div
-                  className="scroll-arrow right"
-                  onClick={() => handleClick("right")}
-                  //onMouseEnter={() => setmouseIn(true)}
-               >
-                  <IoIosArrowForward />
-               </div>
-            )}
+            <div
+               className="scroll-arrow right"
+               onClick={() => handleClick("right")}
+               onMouseEnter={() => setmouseIn(true)}
+               onMouseLeave={() => setmouseIn(false)}
+               style={{
+                  opacity: `${mouseIn ? "1" : "0"}`,
+                  transition: "all 0.5s ease-in-out",
+               }}
+            >
+               <IoIosArrowForward />
+            </div>
+            )
          </div>
       </section>
    );

@@ -1,18 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import AppContext from "../../Context/app-context";
+
+//import components and css
 import "./movieModalPreview.css";
 import { CgClose } from "react-icons/cg";
 import MoreLikeThis from "../more-like-this/MoreLikeThis";
 import SeriesDetails from "../series-details/SeriesDetails";
 
-function MovieModalPreview({
-   handleShowModal,
-   eachMovieAndSeries,
-   creditMovieAndSeries,
-   baseUrl,
-   similarMoviesAndSeries,
-   isSeries,
-   idToListEpisodes,
-}) {
+function MovieModalPreview() {
+   let eachMovieAndSeries;
+   let creditMovieAndSeries;
+   let similarMoviesAndSeries;
+   const {
+      handleShowModal,
+      base_url,
+      isSeries,
+      idToListEpisodes,
+      eachSeries,
+      eachMovie,
+      seriesCredit,
+      movieCredit,
+      similarMovies,
+      similarSeries,
+   } = useContext(AppContext);
+
+   Object.keys(eachSeries).length !== 0
+      ? (eachMovieAndSeries = eachSeries)
+      : (eachMovieAndSeries = eachMovie);
+   Object.keys(seriesCredit).length !== 0
+      ? (creditMovieAndSeries = seriesCredit)
+      : (creditMovieAndSeries = movieCredit);
+   similarMovies.length !== 0
+      ? (similarMoviesAndSeries = similarMovies)
+      : (similarMoviesAndSeries = similarSeries);
+
    const {
       backdrop_path,
       overview,
@@ -33,7 +54,7 @@ function MovieModalPreview({
    const { cast, crew } = creditMovieAndSeries;
 
    useEffect(() => {
-      document.body.style.overflowY = "hidden";
+      document.body.style.overflow = "hidden";
       return () => {
          document.body.style.overflowY = "";
       };
@@ -52,7 +73,7 @@ function MovieModalPreview({
                <div className="mmp-img-overlay">
                   <img
                      className="mmp-img"
-                     src={`${baseUrl}original${backdrop_path}`}
+                     src={`${base_url}original${backdrop_path}`}
                      alt={title ? title : name}
                   />
                   <div className="overlay"></div>
@@ -134,7 +155,7 @@ function MovieModalPreview({
                   <SeriesDetails
                      numberOfSeasons={number_of_seasons}
                      episodePerSeason={seasons}
-                     baseUrl={baseUrl}
+                     baseUrl={base_url}
                      idToListEpisodes={idToListEpisodes}
                   />
                )}
@@ -144,7 +165,7 @@ function MovieModalPreview({
                <h3>More Like This</h3>
                <MoreLikeThis
                   similarMoviesAndSeries={similarMoviesAndSeries}
-                  baseUrl={baseUrl}
+                  baseUrl={base_url}
                />
                {/**call the more like this component*/}
 

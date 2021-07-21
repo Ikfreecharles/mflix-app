@@ -1,76 +1,21 @@
-import { useState, useEffect } from "react";
-
-export const useFectch = () => {
-   const api_key = "e52d1922f45f211a7d31e7e7fe6431de";
-   const base_url = "https://image.tmdb.org/t/p/";
-   const youtubeBase = "https://www.youtube.com/embed/";
-
-   const [movie, setdata] = useState([]);
-   const [latestMovies, setlatestMovies] = useState([]);
-   const [featuredMovie, setfeaturedMovie] = useState({});
-   const [featuredMovieVideo, setfeaturedMovieVideo] = useState({});
-   const [showModal, setshowModal] = useState(false);
-   const [movieID, setmovieID] = useState("");
-   const [seriesID, setseriesID] = useState("");
-   const [eachMovie, seteachMovie] = useState({});
-   const [dataLoadedIsTrue, setdataLoadedIsTrue] = useState(false);
-   const [movieCredit, setmovieCredit] = useState({});
-   const [seriesCredit, setseriesCredit] = useState({});
-   const [similarMovies, setsimilarMovies] = useState([]);
-   const [similarSeries, setsimilarSeries] = useState([]);
-   const [upcomingMovies, setupcomingMovies] = useState([]);
-   const [tvSeries, settvSeries] = useState([]);
-   const [eachSeries, seteachSeries] = useState({});
-   const [isSeries, setisSeries] = useState(false);
-   const [idToListEpisodes, setidToListEpisodes] = useState("");
-
-   //handle show modal for movies
-   const handleShowModal = (decision, movieID, isSeriesDecision) => {
-      setmovieID(movieID);
-      setshowModal(decision);
-      setisSeries(isSeriesDecision);
-   };
-   //handle show modal for series
-   const handleShowModalSeries = (decision, seriesID, isSeriesDecision) => {
-      setseriesID(seriesID);
-      setidToListEpisodes(seriesID);
-      setshowModal(decision);
-      setisSeries(isSeriesDecision);
-   };
-
-   //useEffects
-   useEffect(() => {
-      getData();
-   }, []);
-
-   useEffect(() => {
-      if (seriesID) {
-         getEachSeriesDetails(seriesID);
-      }
-      if (movieID) {
-         getEachMovieDetails(movieID);
-      }
-      return () => {
-         setmovieID("");
-         setseriesID("");
-         seteachMovie({});
-         seteachSeries({});
-         setsimilarMovies([]);
-         setsimilarSeries([]);
-         setseriesCredit({});
-         setmovieCredit({});
-         setdataLoadedIsTrue(false);
-      };
-   }, [movieID, seriesID]);
-
+export const useFetch = () => {
    //Functions
-   const getData = async () => {
+   const getData = async (
+      api_key,
+      settrendingMovies,
+      setfeaturedMovie,
+      setfeaturedMovieVideo,
+      setlatestMovies,
+      setupcomingMovies,
+      settvSeries,
+      setloading
+   ) => {
       //get the trending movie for the day
       const trendingMovieData = await fetch(
          `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}`
       );
       const trendingMovieResult = await trendingMovieData.json();
-      setdata(trendingMovieResult.results);
+      settrendingMovies(trendingMovieResult.results);
 
       //get random video of movie to display in featured
       const movieId =
@@ -102,9 +47,18 @@ export const useFectch = () => {
       );
       const tvSeriesResult = await tvSeriesData.json();
       settvSeries(tvSeriesResult.results);
+
+      setloading(true);
    };
 
-   const getEachMovieDetails = async (theMovie_ID) => {
+   const getEachMovieDetails = async (
+      theMovie_ID,
+      api_key,
+      seteachMovie,
+      setmovieCredit,
+      setsimilarMovies,
+      setdataLoadedIsTrue
+   ) => {
       //get selected movie details
       const MovieDetailsData = await fetch(
          `https://api.themoviedb.org/3/movie/${theMovie_ID}?api_key=${api_key}&append_to_response=videos`
@@ -130,7 +84,14 @@ export const useFectch = () => {
       setdataLoadedIsTrue(true);
    };
 
-   const getEachSeriesDetails = async (theSeries_ID) => {
+   const getEachSeriesDetails = async (
+      theSeries_ID,
+      api_key,
+      seteachSeries,
+      setsimilarSeries,
+      setseriesCredit,
+      setdataLoadedIsTrue
+   ) => {
       //get selected series details
       const seriesDetailsData = await fetch(
          `https://api.themoviedb.org/3/tv/${theSeries_ID}?api_key=${api_key}`
@@ -170,28 +131,5 @@ export const useFectch = () => {
       }
    }; */
 
-   return {
-      base_url,
-      youtubeBase,
-      movie,
-      latestMovies,
-      featuredMovie,
-      featuredMovieVideo,
-      showModal,
-      eachMovie,
-      dataLoadedIsTrue,
-      movieCredit,
-      seriesCredit,
-      similarMovies,
-      similarSeries,
-      upcomingMovies,
-      tvSeries,
-      eachSeries,
-      isSeries,
-      seriesID,
-      idToListEpisodes,
-
-      handleShowModal,
-      handleShowModalSeries,
-   };
+   return { getData, getEachMovieDetails, getEachSeriesDetails };
 };

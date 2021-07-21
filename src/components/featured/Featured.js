@@ -1,17 +1,15 @@
+import { useContext } from "react";
+import AppContext from "../../Context/app-context";
+
+//import css and components
 import "./featured.css";
+import "./featuredMediaquery.css";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import NewMovies from "../new-releases/NewMovies";
 
-function Featured({
-   data,
-   baseUrl,
-   featuredMovie,
-   featuredMovieVideo,
-   youtubeBase,
-   handleShowModal,
-   handleShowModalSeries,
-}) {
+function Featured() {
+   const { base_url, featuredMovie } = useContext(AppContext);
    const { title, name, overview, backdrop_path } = featuredMovie;
 
    return (
@@ -33,14 +31,18 @@ function Featured({
                   />
                )} */}
                <img
-                  src={`${baseUrl}original/${backdrop_path}`}
+                  src={`${base_url}original${backdrop_path}`}
                   alt={title || name}
                />
                <div className="overlay"></div>
                <div className="featured-video-details">
                   <img src="" alt="" />
                   <h2>{title || name}</h2>
-                  <p>{overview}</p>
+                  <p>
+                     {overview.length > 350
+                        ? `${overview.toString().substring(0, 350)}...`
+                        : overview}
+                  </p>
                   <div className="buttons-div">
                      <button className="play-button">
                         <BsFillPlayFill className="icon-size" /> Play
@@ -51,13 +53,7 @@ function Featured({
                   </div>
                </div>
             </div>
-            <NewMovies
-               heading={"Trending Today"}
-               data={data}
-               baseUrl={baseUrl}
-               handleShowModal={handleShowModal}
-               handleShowModalSeries={handleShowModalSeries}
-            />
+            <NewMovies heading={"Trending Today"} />
          </div>
       </section>
    );

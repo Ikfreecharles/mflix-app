@@ -1,4 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useRef, useContext } from "react";
+import AppContext from "../../Context/app-context";
+
+//import components and css
 import { BsFillPlayFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
@@ -8,17 +11,15 @@ function List({
    backdrop,
    title,
    mediaType,
-   baseUrl,
    name,
    firstAirDate,
    releaseDate,
    posterPath,
    originalLanguage,
    adult,
-   //send two functions from useFetch to get either id of movie or id of series
-   handleShowModal,
-   handleShowModalSeries,
 }) {
+   const { base_url, handleShowModal, handleShowModalSeries } =
+      useContext(AppContext);
    const movieCardRef = useRef();
    //console.log(firstAirDate, releaseDate);
    const handleShowModalId = (type, airDate, iD) => {
@@ -31,18 +32,15 @@ function List({
    const handleMouseEnter = () => {
       movieCardRef.current.style.transform = `scale(1.1)`;
       movieCardRef.current.style.zIndex = `2`;
-      movieCardRef.current.style.transition = `all 0.6s ease-in-out`;
-      movieCardRef.current.style.backgroundImage = `url(${baseUrl}original${posterPath})`;
+      movieCardRef.current.style.transition = `all 0.4s ease-in-out`;
+      movieCardRef.current.style.backgroundImage = `url(${base_url}original${posterPath})`;
    };
    const handleMouseOut = () => {
       movieCardRef.current.style.transform = `scale(1)`;
       movieCardRef.current.style.zIndex = `0`;
-      movieCardRef.current.style.transition = `all 0.6s ease-in-out`;
-      movieCardRef.current.style.backgroundImage = `url(${baseUrl}original${backdrop})`;
+      movieCardRef.current.style.transition = `all 0.4s ease-in-out`;
+      movieCardRef.current.style.backgroundImage = `url(${base_url}original${backdrop})`;
    };
-   useEffect(() => {
-      movieCardRef.current.style.backgroundImage = `url(${baseUrl}original${backdrop})`;
-   }, [backdrop, baseUrl]);
 
    return (
       <article>
@@ -51,6 +49,7 @@ function List({
             onMouseEnter={() => handleMouseEnter()}
             onMouseLeave={() => handleMouseOut()}
             ref={movieCardRef}
+            style={{ backgroundImage: `url(${base_url}original${backdrop})` }}
          >
             <div className="overlay"></div>
 
@@ -104,7 +103,9 @@ function List({
                </div>
                <ul className="movie-genre-list">
                   <li>Exciting</li>
+                  <div className="l-dot"></div>
                   <li>Action</li>
+                  <div className="l-dot"></div>
                   <li>Comedy</li>
                </ul>
             </div>

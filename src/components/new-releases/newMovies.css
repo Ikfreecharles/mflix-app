@@ -7,6 +7,7 @@ h3 {
    font-weight: 700;
    margin: 0 0 1rem 5%;
 }
+
 .list-container {
    width: max-content;
    display: flex;
@@ -26,10 +27,12 @@ h3 {
    width: 3rem;
    background-color: rgba(0, 0, 0, 0.2);
    font-size: 3rem;
-   color: #fff;
+
    display: flex;
    align-items: center;
-   transition: all 0.3s ease-in-out;
+}
+.nm-scroll-arrow {
+   color: #848484;
 }
 .scroll-arrow:hover {
    background-color: rgba(0, 0, 0, 0.6);
@@ -45,10 +48,10 @@ h3 {
 /* -----------------------------------------List Styling */
 .movie-card {
    position: relative;
-   height: 30rem;
-   width: 210px;
+   height: 25rem;
+   width: 250px;
    background-color: gray;
-   margin: 0 8px 2rem 0;
+   margin: 0 5px 2rem 0;
    border-radius: 0.3rem;
    padding: 1rem;
    display: flex;
@@ -88,7 +91,7 @@ h3 {
    transition: all 0.4s ease-in-out;
 }
 .movie-card:hover > .movie-details {
-   transform: scale(0.9);
+   /* transform: scale(0.9); */
    opacity: 1;
 }
 .movie-card:hover > .overlay-two {
@@ -97,7 +100,7 @@ h3 {
 
 .movie-details {
    position: absolute;
-   width: 95%;
+   width: 90%;
    left: 0;
    right: 0;
    margin: 0 auto;
@@ -118,55 +121,67 @@ h3 {
 .play,
 .plus,
 .details {
-   width: 2.8rem;
-   height: 2.8rem;
+   width: 2.5rem;
+   height: 2.5rem;
    border-radius: 50%;
-   margin-right: 0.5rem;
-   font-size: 2.1rem;
+   font-size: 1.6rem;
    display: flex;
    align-items: center;
    justify-content: center;
 }
 .play {
    background-color: #fff;
+   margin-right: 0.5rem;
 }
 .plus {
-   border: 2px solid #fff;
+   border: 1px solid #fff;
    color: #fff;
 }
 .details {
-   background-color: rgba(255, 255, 255, 0.4);
+   background-color: rgba(155, 155, 155, 0.4);
    color: #fff;
 }
 .movie-details h4,
 .movie-details p,
 .movie-details ul {
    color: #fff;
-   font-weight: 500;
-
-   font-size: 0.9rem;
+   font-weight: 400;
+   font-size: 0.7rem;
 }
 .movie-details h4 {
-   font-size: 1.2rem;
+   font-size: 1.1rem;
+   font-weight: 500;
 }
 .movie-more-details {
    width: 100%;
-   margin: 0.8rem 0;
+   margin: 0.6rem 0;
    display: flex;
    align-items: center;
 }
 .movie-more-details p {
-   margin-right: 0.3rem;
+   font-size: 0.8rem;
+   margin-right: 0.4rem;
+   font-weight: 400;
 }
 .age-limit {
    border: 1px solid #fff;
-   padding: 2px 6px;
+   padding: 0 2px;
 }
 .movie-genre-list {
    display: flex;
+   align-items: center;
    width: 100%;
-   justify-content: space-between;
    padding: 0;
+}
+.movie-genre-list li {
+   list-style: none;
+}
+.l-dot {
+   background-color: #757575;
+   height: 4px;
+   width: 4px;
+   border-radius: 50%;
+   margin: 0 10px;
 }
 .movie-logo-div {
    display: flex;
@@ -217,5 +232,5 @@ h3 {
 }
 .stripe p {
    margin: 0;
-   font-weight: 400;
+   font-weight: 600;
 }

@@ -18,7 +18,7 @@ function Nav() {
       setpageIsScrolled(window.pageYOffset === 0 ? false : true);
       return () => (window.onscroll = null);
    };
-   console.log(browseClicked);
+
    const handleBrowseIsClicked = () => {
       setbrowseClicked((browseClicked) => !browseClicked);
       navAnimate();
