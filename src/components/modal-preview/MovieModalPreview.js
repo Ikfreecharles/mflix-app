@@ -39,7 +39,6 @@ function MovieModalPreview() {
       overview,
       runtime,
       release_date,
-      production_companies,
       adult,
       title,
       name,

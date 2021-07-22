@@ -9,7 +9,7 @@ import { BsFillPlayFill } from "react-icons/bs";
 import NewMovies from "../new-releases/NewMovies";
 
 function Featured() {
-   const { base_url, featuredMovie } = useContext(AppContext);
+   const { base_url, featuredMovie, trendingMovies } = useContext(AppContext);
    const { title, name, overview, backdrop_path } = featuredMovie;
 
    return (
@@ -53,7 +53,7 @@ function Featured() {
                   </div>
                </div>
             </div>
-            <NewMovies heading={"Trending Today"} />
+            <NewMovies heading={"Trending Today"} data={trendingMovies} />
          </div>
       </section>
    );

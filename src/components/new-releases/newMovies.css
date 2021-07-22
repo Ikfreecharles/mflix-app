@@ -86,13 +86,14 @@ h3 {
    background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.923406862745098) 0%,
-      rgba(0, 0, 0, 0) 72%
+      rgba(0, 0, 0, 0) 125%
    );
-   transition: all 0.4s ease-in-out;
+   transition: all 0.3s ease-in-out;
 }
 .movie-card:hover > .movie-details {
-   /* transform: scale(0.9); */
+   transform: scale(1);
    opacity: 1;
+   transition-delay: 0.3s;
 }
 .movie-card:hover > .overlay-two {
    opacity: 1;
@@ -165,7 +166,7 @@ h3 {
 }
 .age-limit {
    border: 1px solid #fff;
-   padding: 0 2px;
+   padding: 0 8px;
 }
 .movie-genre-list {
    display: flex;

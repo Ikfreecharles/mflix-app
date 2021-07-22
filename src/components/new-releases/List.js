@@ -21,6 +21,7 @@ function List({
    const { base_url, handleShowModal, handleShowModalSeries } =
       useContext(AppContext);
    const movieCardRef = useRef();
+
    //console.log(firstAirDate, releaseDate);
    const handleShowModalId = (type, airDate, iD) => {
       if (type === "tv" || airDate !== "") {
@@ -33,13 +34,17 @@ function List({
       movieCardRef.current.style.transform = `scale(1.1)`;
       movieCardRef.current.style.zIndex = `2`;
       movieCardRef.current.style.transition = `all 0.4s ease-in-out`;
-      movieCardRef.current.style.backgroundImage = `url(${base_url}original${posterPath})`;
+      setTimeout(() => {
+         movieCardRef.current.style.backgroundImage = `url(${base_url}original${posterPath})`;
+      }, 500);
    };
    const handleMouseOut = () => {
       movieCardRef.current.style.transform = `scale(1)`;
       movieCardRef.current.style.zIndex = `0`;
       movieCardRef.current.style.transition = `all 0.4s ease-in-out`;
-      movieCardRef.current.style.backgroundImage = `url(${base_url}original${backdrop})`;
+      setTimeout(() => {
+         movieCardRef.current.style.backgroundImage = `url(${base_url}original${backdrop})`;
+      }, 500);
    };
 
    return (

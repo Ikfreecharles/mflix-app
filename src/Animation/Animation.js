@@ -16,4 +16,14 @@ const movieCardAnimate = () => {
    });
 };
 
-export { navAnimate, movieCardAnimate };
+const hoverModalAnimation = () => {
+   anime({
+      targets: ".showMe",
+      height: ["0", "10rem"],
+      width: ["0", "100%"],
+      duration: 500,
+      easing: "linear",
+   });
+};
+
+export { navAnimate, movieCardAnimate, hoverModalAnimation };

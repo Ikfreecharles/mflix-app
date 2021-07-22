@@ -1,13 +1,11 @@
-import { useState, useRef, useContext } from "react";
-import AppContext from "../../Context/app-context";
+import { useState, useRef } from "react";
 
 //import components and css
 import "./newMovies.css";
 import List from "./List";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-function NewMovies({ heading }) {
-   const { trendingMovies } = useContext(AppContext);
+function NewMovies({ heading, data }) {
    const [slideNumber, setslideNumber] = useState(0);
    const [mouseIn, setmouseIn] = useState(false);
    const listRef = useRef();
@@ -21,7 +19,7 @@ function NewMovies({ heading }) {
             250 * 4 + distance
          }px)`;
       }
-      if (direction === "right" && slideNumber < trendingMovies.length - 4) {
+      if (direction === "right" && slideNumber < data.length - 4) {
          setslideNumber((slideNumber) => slideNumber + 4);
          listRef.current.style.transform = `translateX(${
             -250 * 4 + distance
@@ -52,7 +50,7 @@ function NewMovies({ heading }) {
                onMouseEnter={() => setmouseIn(true)}
                onMouseLeave={() => setmouseIn(false)}
             >
-               {trendingMovies.map((items) => {
+               {data.map((items) => {
                   const {
                      id,
                      backdrop_path,

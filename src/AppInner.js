@@ -9,36 +9,31 @@ import MovieModalPreview from "./components/modal-preview/MovieModalPreview";
 import NewMovies from "./components/new-releases/NewMovies";
 
 function AppInner() {
-   const { loading, showModal, dataLoadedIsTrue } = useContext(AppContext);
+   const {
+      loading,
+      showModal,
+      dataLoadedIsTrue,
+      latestMovies,
+      upcomingMovies,
+      tvSeries,
+   } = useContext(AppContext);
 
    return (
       <div>
          <Nav />
+         {loading ? (
+            <>
+               <Featured />
+               <MovieCards title={"Now Playing"} movies={latestMovies} />
+               <MovieCards title={"Upcoming Movies"} movies={upcomingMovies} />
+               <article className="new-movies-container-div-app-js">
+                  <NewMovies heading={"Tv Series"} data={tvSeries} />
+               </article>
+            </>
+         ) : (
+            <h2 id="page-loading">Loading...</h2>
+         )}
 
-         {loading ? <Featured /> : <h2 id="page-loading">Loading...</h2>}
-
-         {/*  <MovieCards
-            title={"Now Playing"}
-            movies={latestMovies}
-            baseUrl={base_url}
-            handleShowModal={handleShowModal}
-            handleClick={handleClick}
-         />
-         <MovieCards
-            title={"Upcoming Movies"}
-            movies={upcomingMovies}
-            baseUrl={base_url}
-            handleShowModal={handleShowModal}
-         /> 
-         <article className="new-movies-container-div-app-js">
-            <NewMovies
-               heading={"Tv Series"}
-               data={tvSeries}
-               baseUrl={base_url}
-               handleShowModal={handleShowModalSeries}
-               handleShowModalSeries={handleShowModalSeries}
-            />
-         </article>*/}
          {showModal && dataLoadedIsTrue && <MovieModalPreview />}
       </div>
    );

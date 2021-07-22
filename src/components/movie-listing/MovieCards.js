@@ -1,67 +1,42 @@
 import { useState, useRef } from "react";
+
+//import components and css
 import "./movieCards.css";
 import MovieList from "./MovieList";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-function MovieCards({ movies, baseUrl, handleShowModal, title }) {
-   const listRef = useRef();
+function MovieCards({ movies, title }) {
+   const cardRef = useRef(null);
+   const wrapperRef = useRef(null);
    const [slideNumber, setslideNumber] = useState(0);
-
+   let index = 0;
    const handleClick = (direction) => {
-      let distance = listRef.current.getBoundingClientRect().x;
-      console.log(listRef.current.getBoundingClientRect());
-      if (direction === "left" && slideNumber > 0) {
-         setslideNumber((slideNumber) => slideNumber - 4);
-         listRef.current.style.transform = `translateX(${
-            210 * 4 + distance
-         }px)`;
-      }
-      if (direction === "right" && slideNumber < movies.length) {
-         setslideNumber((slideNumber) => slideNumber + 4);
-         listRef.current.style.transform = `translateX(${
-            -210 * 4 + distance
-         }px)`;
+      if (direction === "left" && index > 0) {
+         index--;
+         cardRef.current.style.transform = `translateX(-${800 * index}px)`;
+      } else if (
+         direction === "right" &&
+         cardRef.current.getBoundingClientRect().width - index * 800 >
+            wrapperRef.current.getBoundingClientRect().width
+      ) {
+         index++;
+         cardRef.current.style.transform = `translateX(-${800 * index}px)`;
       }
    };
+   console.log(index);
    return (
       <section className="movie-card-outer-div">
          <h3>{title}</h3>
-         <div className="movie-card-wrapper">
+         <div className="movie-card-wrapper" ref={wrapperRef}>
             <div
                className="scroll-arrow left"
                onClick={() => handleClick("left")}
             >
                <IoIosArrowBack />
             </div>
-            <div className="movie-card-outer-container" ref={listRef}>
-               {movies.map((items, index) => {
-                  const {
-                     id,
-                     adult,
-                     backdrop_path,
-                     title,
-                     name,
-                     overview,
-                     release_date,
-                     original_language,
-                  } = items;
-                  return (
-                     <MovieList
-                        key={items.id}
-                        id={id}
-                        adult={adult}
-                        backdropPath={backdrop_path}
-                        movieTitle={title}
-                        name={name}
-                        overview={overview}
-                        releaseDate={release_date}
-                        originalLanguage={original_language}
-                        index={index}
-                        baseUrl={baseUrl}
-                        handleShowModal={handleShowModal}
-                        handleClick={handleClick}
-                     />
-                  );
+            <div className="movie-card-outer-container" ref={cardRef}>
+               {movies.map((items) => {
+                  return <MovieList key={items.id} item={items} />;
                })}
             </div>
             <div
