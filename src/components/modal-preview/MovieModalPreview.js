@@ -53,9 +53,9 @@ function MovieModalPreview() {
    const { cast, crew } = creditMovieAndSeries;
 
    useEffect(() => {
-      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
       return () => {
-         document.body.style.overflowY = "";
+         document.body.style.position = "static";
       };
    }, []);
 
@@ -80,8 +80,8 @@ function MovieModalPreview() {
 
                <div className="container mmp-container-adjust">
                   <section className="mmp-details row">
+                     <p className="mmp-title">{title ? title : name}</p>
                      <div className="mmp-description col-lg-7">
-                        <p className="mmp-title">{title ? title : name}</p>
                         <div className="mmp-desc-metadata">
                            <p style={{ color: "#00b916" }}>
                               {release_date
@@ -149,6 +149,7 @@ function MovieModalPreview() {
                      </div>
                   </section>
                </div>
+
                {/**if isSeries is true, display this component */}
                {isSeries && (
                   <SeriesDetails
@@ -160,6 +161,8 @@ function MovieModalPreview() {
                )}
                {/**if isSeries is true, display this component */}
 
+               <div className="divider-line"></div>
+
                {/**call the more like this component*/}
                <h3>More Like This</h3>
                <MoreLikeThis
@@ -167,6 +170,8 @@ function MovieModalPreview() {
                   baseUrl={base_url}
                />
                {/**call the more like this component*/}
+
+               <div className="divider-line"></div>
 
                <h3>About the Movie</h3>
                <div className="mmp-about-movie" id="more">

@@ -6,31 +6,34 @@ import List from "./List";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 function NewMovies({ heading, data }) {
-   const [slideNumber, setslideNumber] = useState(0);
+   const listRef = useRef(null);
+   const sectionRef = useRef(null);
    const [mouseIn, setmouseIn] = useState(false);
-   const listRef = useRef();
+   let idx = 0;
 
    const handleClick = (direction) => {
-      let distance = listRef.current.getBoundingClientRect().x;
-      console.log(listRef.current.getBoundingClientRect());
-      if (direction === "left" && slideNumber > 0) {
-         setslideNumber((slideNumber) => slideNumber - 4);
-         listRef.current.style.transform = `translateX(${
-            250 * 4 + distance
+      const listRefWidth = listRef.current.getBoundingClientRect().width;
+      const sectionRefWidth = sectionRef.current.getBoundingClientRect().width;
+      const widthDiff = listRefWidth - idx * sectionRefWidth;
+
+      if (direction === "left" && idx > 0) {
+         idx--;
+         listRef.current.style.transform = `translateX(-${
+            idx * sectionRefWidth
+         }px)`;
+      } else if (direction === "right" && widthDiff > sectionRefWidth) {
+         idx++;
+         listRef.current.style.transform = `translateX(-${
+            idx * sectionRefWidth
          }px)`;
       }
-      if (direction === "right" && slideNumber < data.length - 4) {
-         setslideNumber((slideNumber) => slideNumber + 4);
-         listRef.current.style.transform = `translateX(${
-            -250 * 4 + distance
-         }px)`;
-      }
+      console.log("index: ", idx);
    };
 
    return (
       <section className="new-movie-section">
          <h3>{heading}</h3>
-         <div className="movie-list">
+         <div className="movie-list" ref={sectionRef}>
             <div
                className="scroll-arrow left"
                onClick={() => handleClick("left")}

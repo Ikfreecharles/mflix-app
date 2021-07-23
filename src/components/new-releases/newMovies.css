@@ -10,7 +10,7 @@ h3 {
 
 .list-container {
    width: max-content;
-   display: flex;
+   display: inline-flex;
    align-items: center;
    transform: translateX(0px);
    transition: all 0.7s ease-in-out;
@@ -60,6 +60,7 @@ h3 {
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
+   cursor: pointer;
 }
 .overlay {
    position: absolute;
@@ -129,6 +130,7 @@ h3 {
    display: flex;
    align-items: center;
    justify-content: center;
+   transition: all 0.3s ease-in-out;
 }
 .play {
    background-color: #fff;
@@ -137,6 +139,16 @@ h3 {
 .plus {
    border: 1px solid #fff;
    color: #fff;
+}
+.play:hover {
+   background-color: red;
+   color: #fff;
+}
+
+.plus:hover,
+.details:hover {
+   background-color: #383838;
+   color: #8b8b8b;
 }
 .details {
    background-color: rgba(155, 155, 155, 0.4);
@@ -147,11 +159,11 @@ h3 {
 .movie-details ul {
    color: #fff;
    font-weight: 400;
-   font-size: 0.7rem;
+   font-size: 0.9rem;
 }
 .movie-details h4 {
-   font-size: 1.1rem;
-   font-weight: 500;
+   font-size: 1.2rem;
+   font-weight: 700;
 }
 .movie-more-details {
    width: 100%;

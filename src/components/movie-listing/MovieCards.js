@@ -8,22 +8,28 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 function MovieCards({ movies, title }) {
    const cardRef = useRef(null);
    const wrapperRef = useRef(null);
-   const [slideNumber, setslideNumber] = useState(0);
+   const [mouseIn, setmouseIn] = useState(false);
    let index = 0;
+
    const handleClick = (direction) => {
       if (direction === "left" && index > 0) {
          index--;
-         cardRef.current.style.transform = `translateX(-${800 * index}px)`;
+         cardRef.current.style.transform = `translateX(-${
+            wrapperRef.current.getBoundingClientRect().width * index
+         }px)`;
       } else if (
          direction === "right" &&
-         cardRef.current.getBoundingClientRect().width - index * 800 >
+         cardRef.current.getBoundingClientRect().width -
+            index * wrapperRef.current.getBoundingClientRect().width >
             wrapperRef.current.getBoundingClientRect().width
       ) {
          index++;
-         cardRef.current.style.transform = `translateX(-${800 * index}px)`;
+         cardRef.current.style.transform = `translateX(-${
+            wrapperRef.current.getBoundingClientRect().width * index
+         }px)`;
       }
    };
-   console.log(index);
+
    return (
       <section className="movie-card-outer-div">
          <h3>{title}</h3>
@@ -31,6 +37,12 @@ function MovieCards({ movies, title }) {
             <div
                className="scroll-arrow left"
                onClick={() => handleClick("left")}
+               onMouseEnter={() => setmouseIn(true)}
+               onMouseLeave={() => setmouseIn(false)}
+               style={{
+                  opacity: `${mouseIn ? "1" : "0"}`,
+                  transition: "all 0.5s ease-in-out",
+               }}
             >
                <IoIosArrowBack />
             </div>
@@ -41,7 +53,13 @@ function MovieCards({ movies, title }) {
             </div>
             <div
                className="scroll-arrow right"
-               onClick={() => handleClick("right", slideNumber, setslideNumber)}
+               onClick={() => handleClick("right")}
+               onMouseEnter={() => setmouseIn(true)}
+               onMouseLeave={() => setmouseIn(false)}
+               style={{
+                  opacity: `${mouseIn ? "1" : "0"}`,
+                  transition: "all 0.5s ease-in-out",
+               }}
             >
                <IoIosArrowForward />
             </div>

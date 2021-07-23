@@ -27,7 +27,7 @@
 }
 .movie-list-outer-div-container:hover > .hm-outer-container {
    height: 300px;
-   width: 340px;
+   width: 310px;
    z-index: 6;
    border-radius: 5px;
    opacity: 1;

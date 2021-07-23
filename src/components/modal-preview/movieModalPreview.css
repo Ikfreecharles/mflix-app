@@ -25,6 +25,7 @@
    height: 2.5rem;
    border-radius: 50%;
    border: 2px solid #7a7a7a;
+   background-color: rgba(0, 0, 0, 0.7);
    color: #fff;
    font-size: 1.5rem;
    display: flex;
@@ -44,7 +45,6 @@
    height: 100%;
    object-fit: cover;
 }
-
 .mmp-details {
    display: flex;
    justify-content: space-between;
@@ -54,7 +54,7 @@
 }
 .mmp-title {
    font-size: 1.6rem;
-   margin-bottom: 2rem;
+   margin-bottom: 1rem;
    font-weight: 800;
 }
 .mmp-desc-metadata {
@@ -95,9 +95,15 @@
    padding-right: 3rem;
 }
 .mmp-about-movie p {
-   font-weight: 300;
-   margin-bottom: 0.3rem;
+   font-weight: 400;
+   margin-bottom: 0.6rem;
 }
 .mmp-about-movie span {
    color: #5c5c5c;
+}
+.divider-line {
+   width: 90%;
+   height: 1px;
+   background-color: #212121;
+   margin: 3rem auto;
 }

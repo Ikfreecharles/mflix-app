@@ -20,7 +20,7 @@ function EpisodeList({
             </div>
             <div className="ep-description col-8">
                <h3>{name}</h3>
-               <p style={{ height: "96px" }}>
+               <p>
                   {overview
                      ? overview.length > 170
                         ? `${overview.substring(0, 170)}...`
@@ -32,14 +32,14 @@ function EpisodeList({
                   {airDate ? airDate : "No Information"}
                </p>
                <div className="ep-crew">
-                  <p style={{ height: "92px" }}>
+                  <p>
                      <span>Crew: </span>
                      {crew.length !== 0
-                        ? crew
-                             .map((item) => `${item.job}: ${item.name}`)
-                             .join(", ").length > 170
+                        ? crew.map((item) => `${item.job}: ${item.name}`)
+                             .length > 10
                            ? `${crew
                                 .map((item) => `${item.job}: ${item.name}`)
+                                .slice(0, 10)
                                 .join(", ")}...`
                            : crew
                                 .map((item) => `${item.job}: ${item.name}`)

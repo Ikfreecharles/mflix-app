@@ -1,4 +1,3 @@
-import React from "react";
 import MoreLikeThisList from "./MoreLikeThisList";
 
 function MoreLikeThis({ similarMoviesAndSeries, baseUrl }) {
